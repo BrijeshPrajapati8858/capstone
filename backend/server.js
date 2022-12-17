@@ -38,6 +38,11 @@ const server = app.listen(process.env.PORT,()=>{
     console.log(`server is running at ${process.env.PORT}`)
 })
 
+app.use(express.static(path.join(__dirname, "../build")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, " ../build/index.html"));
+});
 //unhandled  promise rejections
 
 process.on("unhandledRejection", err=>{
